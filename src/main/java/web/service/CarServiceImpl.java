@@ -10,7 +10,7 @@ import java.util.List;
 @Component("carService")
 public class CarServiceImpl extends CarService {
 
-    List<Car> list = new ArrayList<>();
+    private List<Car> list = new ArrayList<>();
 
     @Override
     public List<Car> getCars(int max) {
@@ -25,6 +25,12 @@ public class CarServiceImpl extends CarService {
     @Override
     public void addCar(Car car) {
         list.add(car);
+    }
+
+    @Override
+    public void addCar(String model, int series, int year) {
+        Car c = new Car(model, series, year);
+        list.add(c);
     }
 
     @Override
