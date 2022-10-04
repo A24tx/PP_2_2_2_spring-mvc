@@ -10,27 +10,18 @@ import web.service.CarService;
 @Controller
 public class CarController {
 
-    private CarService carservice;
+    private CarService carService;
 
-    public CarController(CarService cs) {
-        this.carservice = cs;
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
 
     @GetMapping(value = "/cars")
     public String printCars(@RequestParam int count, ModelMap model) {
-        addTestCars();
-        model.addAttribute("cars", carservice.getCars(count));
+        carService.addTestCars();
+        model.addAttribute("cars", carService.getCars(count));
         return "cars";
     }
 
-    private void addTestCars() {
-        carservice.clearCars();
-
-        carservice.addCar("toyota raw 4", 223, 2012);
-        carservice.addCar("ваз 2106", 3, 1996);
-        carservice.addCar("some car", 7773, 9999);
-        carservice.addCar("range rover sport", 58, 2022);
-        carservice.addCar("какая-то машина", 388, 2001);
-    }
 
 }

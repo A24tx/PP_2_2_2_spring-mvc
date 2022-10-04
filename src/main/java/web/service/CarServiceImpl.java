@@ -7,7 +7,7 @@ import web.model.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("carService")
+@Component("list")
 public class CarServiceImpl extends CarService {
 
     private List<Car> list = new ArrayList<>();
@@ -28,7 +28,7 @@ public class CarServiceImpl extends CarService {
     }
 
     @Override
-    public void addCar(String model, int series, int year) {
+    public void addCarFromFields(String model, int series, int year) {
         Car c = new Car(model, series, year);
         list.add(c);
     }
@@ -36,5 +36,16 @@ public class CarServiceImpl extends CarService {
     @Override
     public void clearCars() {
         list.clear();
+    }
+
+    @Override
+    public void addTestCars() {
+        clearCars();
+
+        list.add(new Car("toyota raw 4", 223, 2012));
+        list.add(new Car("ваз 2106", 3, 1996));
+        list.add(new Car("some car", 7773, 9999));
+        list.add(new Car("range rover sport", 58, 2022));
+        list.add(new Car("какая-то машина", 388, 2001));
     }
 }
